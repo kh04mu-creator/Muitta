@@ -2,6 +2,8 @@ package com.springboot.project.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,7 @@ public class reviewDTO {
 	   private int r_view;
 	   private double r_star;
 	   private String r_detail;
-	   private String r_upload;
+	   private MultipartFile r_upload;
+	   private String r_name;
 	   private int m_no;
 }
