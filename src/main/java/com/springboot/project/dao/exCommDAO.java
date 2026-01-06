@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.springboot.project.dto.exCommDTO;
-
+ 
 @Mapper
 public interface exCommDAO {
 	public List<exCommDTO> exc_listDao();

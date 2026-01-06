@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.springboot.project.dto.yesPriceDTO;
-
+ 
 @Mapper 
 public interface yesPriceDAO {
    public List<yesPriceDTO> yes_listDao();

@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.springboot.project.dto.melonPriceDTO;
-
+ 
 @Mapper 
 public interface melonPriceDAO {
    public List<melonPriceDTO> melon_listDao();
