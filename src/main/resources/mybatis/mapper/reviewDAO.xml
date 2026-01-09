@@ -6,17 +6,22 @@
 	<select id="r_listDao" resultType="com.springboot.project.dto.reviewDTO">
 		select * from review order by r_no desc	 	
 	</select>
+	<!-- 조회수 증가 -->
+	<update id="r_viewCountUp">
+    	update review set r_view = r_view + 1 where r_no = #{param1}
+	</update>
 	<select id="r_viewDao" resultType="com.springboot.project.dto.reviewDTO">
 		select * from review where r_no=#{param1} 	
 	</select>
 	<insert id="r_writeDao">
-		insert into review
-		 values(review_seq.nextval,#{r_title},#{r_writer},SYSDATE,#{r_view},#{r_star},#{r_detail},#{r_upload},#{r_name},#{m_no})
+		insert into review (r_no,r_title,r_writer,r_date,r_view,r_star,r_detail,r_upload,m_no)
+		 values(review_seq.nextval,#{r_title},#{r_writer},SYSDATE,0,#{r_star},#{r_detail},#{r_upload},2)
 	</insert>
 	<update id="r_updateDao">
-         update review set r_title=#{r_title},SYSDATE,r_star=#{r_star},r_detail=#{r_detail},r_upload=#{r_upload},r_name=#{r_name} where r_no=#{r_no}
+         update review set r_title=#{r_title},r_date=SYSDATE,r_star=#{r_star},r_detail=#{r_detail},r_upload=#{r_upload} where r_no=#{r_no}
 	</update>
+
 	<delete id="r_deleteDao">
 		delete from review where r_no=#{param1}
 	</delete>
-	</mapper>
+</mapper>

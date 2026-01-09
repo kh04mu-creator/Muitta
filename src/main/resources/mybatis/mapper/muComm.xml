@@ -15,7 +15,7 @@
 	</insert>
 	<update id="mc_updateDao">
 		update mc_comm
-		 set mc_date=SYSDATE,mc_detail=#{mc_detail} where mc_no=#{mc_no}
+		 set mc_date=SYSDATE,mc_detail=#{mc_detail} where mc_no=#{param1}
 	</update>
 	<delete id="mc_deleteDao">
 		delete from mc_comm where mc_no=#{mc_no}
