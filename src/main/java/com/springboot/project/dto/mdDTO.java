@@ -11,8 +11,7 @@ public class mdDTO {
    private int md_no;
    private String md_category;
    private String md_title;
-   private MultipartFile md_upload;
-   private String md_name;
+   private String md_upload;
    private Date md_start;
    private Date md_end;
    private String md_memo;

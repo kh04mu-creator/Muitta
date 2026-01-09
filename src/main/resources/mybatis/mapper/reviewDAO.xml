@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.project.dao.reviewDAO">
+	<select id="r_listDao" resultType="com.springboot.project.dto.reviewDTO">
+		select * from review order by r_no desc	 	
+	</select>
+	<select id="r_viewDao" resultType="com.springboot.project.dto.reviewDTO">
+		select * from review where r_no=#{param1} 	
+	</select>
+	<insert id="r_writeDao">
+		insert into review
+		 values(review_seq.nextval,#{r_title},#{r_writer},SYSDATE,#{r_view},#{r_star},#{r_detail},#{r_upload},#{r_name},#{m_no})
+	</insert>
+	<update id="r_updateDao">
+         update review set r_title=#{r_title},SYSDATE,r_star=#{r_star},r_detail=#{r_detail},r_upload=#{r_upload},r_name=#{r_name} where r_no=#{r_no}
+	</update>
+	<delete id="r_deleteDao">
+		delete from review where r_no=#{param1}
+	</delete>
+	</mapper>
