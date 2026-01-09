@@ -13,7 +13,8 @@ public class exchangeDTO {
    private String ex_writer;
    private Date ex_date;
    private String ex_detail;
-   private String ex_upload;
+   private MultipartFile ex_upload; // db 저장된 컬럼
+   private String ex_name;
    private String ex_ing;   
    private int m_no;
 }

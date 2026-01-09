@@ -9,9 +9,6 @@
 	<select id="l_viewDao" resultType="com.springboot.project.dto.mLikeDTO">
 		select * from m_like where l_no=#{param1} 	
 	</select>
-	<select id="l_countDao" resultType="com.springboot.project.dto.mLikeDTO">
-		select count(*) from m_like where mu_no=#{param1} 	
-	</select>
 	<insert id="l_writeDao">
 		insert into m_like
 		 values(m_like_seq.nextval,#{l_title},#{l_start},#{l_end},#{mu_no},#{m_no})

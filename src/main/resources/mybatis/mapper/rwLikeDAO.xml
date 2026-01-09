@@ -9,9 +9,7 @@
 	<select id="rw_viewDao" resultType="com.springboot.project.dto.rwLikeDTO">
 		select * from rwLike where rw_no=#{param1} 	
 	</select>
-	<select id="rw_countDao" resultType="com.springboot.project.dto.rwLikeDTO">
-		select count(*) from rwLike where rw_no=#{param1}
-	</select>
+
 	<update id="rw_updateDao"> 	
          update rwLike set // 공감 취소 where rw_no=#{rw_no}
 	</update> 

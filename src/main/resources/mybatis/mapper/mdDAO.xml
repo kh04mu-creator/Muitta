@@ -11,11 +11,11 @@
 	</select>
 	<insert id="md_writeDao">
 		insert into md
-		 values(md_seq.nextval,#{md_category},#{md_title},#{md_upload},
+		 values(md_seq.nextval,#{md_category},#{md_title},
 		 #{md_upload},#{md_start},#{md_end},#{md_memo})
 	</insert>
 	<update id="md_updateDao">
-         update md set md_category=#{md_category},md_title=#{md_title},md_upload=#{md_upload},
+         update md set md_category=#{md_category},md_title=#{md_title},md_name=#{md_name},
          md_start=#{md_start},md_end=#{md_end},md_memo=#{md_memo} 
           where md_no=#{md_no}
 	</update>
