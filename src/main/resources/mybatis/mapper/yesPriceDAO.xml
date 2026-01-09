@@ -10,7 +10,7 @@
 		select * from yes_price where yes_no=#{param1}
 	</select>
 	<insert id="yes_writeDao">
-		insert into yes_price values(yes_price_seq.nextval, #{yes_title}, #{yes_price},#{yes_link}, #{mu_no})
+		insert into yes_price values(yes_price_seq.nextval, #{yes_title}, #{yes_price},#{yes_link}, #{yes_no})
 	</insert>
 	<update id="yes_updateDao">
 		update yes_price set yes_title=#{yes_title}, yes_price=#{yes_price}, yes_link=#{yes_link} where yes_no=#{yes_no}

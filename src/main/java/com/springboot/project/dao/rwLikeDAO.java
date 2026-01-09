@@ -1,14 +1,12 @@
 package com.springboot.project.dao;
 
-import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
-import com.springboot.project.dto.rwLikeDTO;
 
 @Mapper
 public interface rwLikeDAO {
-	public List<rwLikeDTO> rwLikeDao();
-	public rwLikeDTO rw_viewDao(int rw_no);
-	public int rw_deleteDao(int rw_no);
-	public int rw_updateDao(rwLikeDTO dto);	
 
+    int likeCheck(int m_no, int r_no);   // 공감 여부 확인
+    int likeInsert(int m_no, int r_no);  // 공감 추가
+    int likeDelete(int m_no, int r_no);  // 공감 취소
+    int likeCount(int r_no);             // 공감 수
 }

@@ -8,7 +8,6 @@ import lombok.Data;
 public class muInfoDTO {
    private int mi_no;
    private String mi_detail;
-   private MultipartFile mi_upload;
-   private String mi_pname;
+   private String mi_upload;
    private int mu_no;
 }

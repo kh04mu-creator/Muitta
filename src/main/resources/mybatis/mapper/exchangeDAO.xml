@@ -10,8 +10,7 @@
 		select * from exchange where ex_no=#{param1}
 	</select>
 	<insert id="ex_writeDao">
-		insert into exchange
-		values(exchange_seq.nextval, #{ex_title}, #{ex_writer}, SYSDATE, #{ex_detail}, #{ex_upload}, #{ex_ing}, 1)
+		insert into exchange values(exchange_seq.nextval, #{ex_title}, #{ex_writer}, SYSDATE, #{ex_detail}, #{ex_upload}, #{ex_ing}, #{m_no})
 	</insert>
 	<update id="ex_updateDao">
 		update exchange set ex_title=#{ex_title}, ex_date=SYSDATE, ex_detail=#{ex_detail}, ex_upload=#{ex_upload}, ex_ing=#{ex_ing} where ex_no=#{ex_no}

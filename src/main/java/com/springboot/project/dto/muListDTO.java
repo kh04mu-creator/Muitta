@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class muListDTO {
-   private int  mu_no;
+   private int  mu_mo;
    private String mu_title;
    private String mu_place;
    private String mu_addr;
@@ -20,6 +20,5 @@ public class muListDTO {
    private String r_price;
    private String s_price;
    private String a_price;
-   private MultipartFile mu_pupload;
-   private String mu_pname;
+   private String mu_pupload;
 }
