@@ -10,6 +10,5 @@ public interface rwLikeDAO {
 	public rwLikeDTO rw_viewDao(int rw_no);
 	public int rw_deleteDao(int rw_no);
 	public int rw_updateDao(rwLikeDTO dto);	
-	public int rw_countDao(int rw_no);
 
 }

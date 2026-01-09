@@ -15,6 +15,6 @@ public class reviewDTO {
 	   private int r_view;
 	   private double r_star;
 	   private String r_detail;
-	   private String r_upload;
+	   private  MultipartFile r_upload;
 	   private int m_no;
 }

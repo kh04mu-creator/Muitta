@@ -8,9 +8,9 @@ import com.springboot.project.dto.muCastDTO;
 
 @Mapper
 public interface muCastDAO {
-	public List<muCastDTO> ca_listDao();
-	public muCastDTO ca_viewDao(int ca_no);
-	public int ca_writeDao(muCastDTO dto);
-	public int ca_updateDao(muCastDTO dto);
-	public int ca_deleteDao(int ca_no);
+	public List<muCastDTO> mucast_listDao();
+	public muCastDTO mucast_viewDao(int ca_no);
+	public int mucast_writeDao(muCastDTO dto);
+	public int mucast_updateDao(muCastDTO dto);
+	public int mucast_deleteDao(int ca_no);
 }

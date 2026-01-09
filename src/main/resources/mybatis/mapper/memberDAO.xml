@@ -11,7 +11,7 @@
 	</select>
 	<insert id="m_writeDao">
 		insert into member
-		 values(member_seq.nextval,#{m_id},#{m_password},#{m_name},#{m_gender},#{m_birth},#{m_email},#{m_tel},SYSDATE,#{m_auth})
+		 values(member_seq.nextval,#{m_id},#{m_password},#{m_name},#{m_gender},#{m_birth},#{m_email},#{m_tel},SYSDATE,user)
 	</insert>
 	<update id="m_updateDao">
 		update member

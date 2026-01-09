@@ -12,5 +12,4 @@ public interface mLikeDAO {
 	public mLikeDTO l_viewDao(int l_no);
 	public int l_writeDao(mLikeDTO dto);
 	public int l_deleteDao(int l_no);
-	public int l_countDao(int mu_no);
 }

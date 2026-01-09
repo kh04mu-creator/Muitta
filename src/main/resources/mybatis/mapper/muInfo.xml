@@ -3,19 +3,19 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.springboot.project.dao.muInfoDAO">
-	<select id="mi_listDao" resultType="com.springboot.project.dto.muInfoDTO">
+	<select id="melon_listDao" resultType="com.springboot.project.dto.muInfoDTO">
 		select * from mu_info
 	</select>
-	<select id="mi_viewDao" resultType="com.springboot.project.dto.muInfoDTO">
+	<select id="melon_viewDao" resultType="com.springboot.project.dto.muInfoDTO">
 		select * from mu_info where melon_no=#{param1}
 	</select>
-	<insert id="mi_writeDao">
-		insert into mu_info values(mi_no_seq.nextval, #{mi_detail}, #{mi_upload}, #{mu_no})
+	<insert id="melon_writeDao">
+		insert into mu_info values(mi_no_seq.nextval, #{mi_detail}, #{mi_upload},#{mi_pname}, #{mu_no})
 	</insert>
-	<update id="mi_updateDao">
-		update mu_info set mi_detail=#{mi_detail}, mi_upload=#{mi_upload} where mi_no=#{mi_no}
+	<update id="melon_updateDao">
+		update mu_info set mi_detail=#{mi_detail}, mi_upload=#{mi_upload}, mi_pname=#{mi_pname} where mi_no=#{mi_no}
 	</update>
-	<delete id="mi_deleteDao">
+	<delete id="melon_deleteDao">
 		delete from mu_info where mi_no=#{param1}
 	</delete>
 </mapper>
