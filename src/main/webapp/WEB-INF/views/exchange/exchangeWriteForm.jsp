@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/common/header.jsp" %> 
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +8,7 @@
 </head>
 <body>
 <h1>티켓거래 게시판</h1>
-<form name="exchangeWriteForm" method="post" action="/exchange/exchangeWrite" enctype="multipart/form-data">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+<form name="exchangeWriteForm" method="post" action="exchangeWrite" enctype="multipart/form-data">
 <table border="0" width="700">
 	<tr>
 		<td>제목</td>
@@ -18,7 +16,7 @@
 	</tr>
 	<tr>
 		<td>작성자</td>
-		<td>${pageContext.request.userPrincipal.name}</td>		
+		<td><input type="text" name="ex_writer" id="ex_writer"></td>		
 	</tr>	
 	<tr>
 		<td>내용</td>
