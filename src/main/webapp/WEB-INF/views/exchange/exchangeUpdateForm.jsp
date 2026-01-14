@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>    
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +10,9 @@
 <body>
 <h1>티켓거래 게시물 수정하기</h1>
 <form name="exchangeUpdateForm" method="post" action="exchangeUpdate" enctype="multipart/form-data">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<input type="hidden" name="ex_writer" id="ex_writer">
+
 <table border="0" width="700">
+<input type="hidden" name="ex_writer" id="ex_writer">
 	<tr>
 		<td>제목</td>
 		<td><input type="text" name="ex_title" id="ex_title" value="${exedit.ex_title}"></td>				
