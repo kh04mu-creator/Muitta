@@ -27,6 +27,14 @@
 			<td><input type="text" name="mu_addr" id="mu_addr" value="${medit.mu_addr}"></td>
 		</tr>
 		<tr>
+			<td>공연기간</td>
+			<td>
+				<input type="text" name="mu_start" id="mu_start" value="${medit.mu_start}"> ~ 
+				<input type="text" name="mu_end" id="mu_end" value="${medit.mu_end}">
+			</td>
+		</tr>
+		
+		<tr>
 			<td>공연시간</td>
 			<td><input type="text" name="mu_time" id="mu_time" value="${medit.mu_time}"></td>
 		</tr>
@@ -35,33 +43,33 @@
 			<td><input type="text" name="mu_age" id="mu_age" value="${medit.mu_age}"></td>
 		</tr>
 		<tr>
-			<td>
-				VIP석 가격
-			</td>
-			<td><input type="text" name="vip_price" id="vip_price" value="${medit.vip_price}"></td>
+			<td>NOl/인터파크 가격</td>
+			<td><input type="text" name="inter_price" id="inter_price" value="${medit.inter_price}"></td>
 		</tr>
 		<tr>
-			<td>R석 가격</td>
-			<td><input type="text" name="r_price" id="r_price" value="${medit.r_price}"></td>
+			<td>NOl/인터파크 링크</td>
+			<td><input type="text" name="inter_link" id="inter_link" value="${medit.inter_link}"></td>
 		</tr>
 		<tr>
-			<td>S석 가격</td>
-			<td><input type="text" name="s_price" id="s_price" value="${medit.s_price}"></td>
+			<td>yes24 가격</td>
+			<td><input type="text" name="yes_price" id="yes_price" value="${medit.yes_price}"></td>
 		</tr>
 		<tr>
-			<td>A석 가격</td>
-			<td><input type="text" name="a_price" id="a_price" value="${medit.a_price}"></td>
+			<td>yes24 링크</td>
+			<td><input type="text" name="yes_link" id="yes_link" value="${medit.yes_link}"></td>
 		</tr>
+		<tr>
+			<td>Melon 가격</td>
+			<td><input type="text" name="melon_price" id="melon_price" value="${medit.melon_price}"></td>
+		</tr>
+		<tr>
+			<td>Melon 링크</td>
+			<td><input type="text" name="melon_link" id="melon_link" value="${medit.melon_link}"></td>
+		</tr>
+
 		<tr>
 			<td>공연정보</td>
 			<td><textarea name="mi_detail" id="mi_detail" rows="15" cols="80" wrap="hard">${miedit.mi_detail}</textarea></td>
-		</tr>
-		<tr>
-			<td>게시일</td>
-			<td>
-				<input type="text" name="mu_start" id="mu_start" value="${medit.mu_start}"> ~ 
-				<input type="text" name="mu_end" id="mu_end" value="${medit.mu_end}">
-			</td>
 		</tr>
 		<tr>
 			<td>포스터</td>

@@ -20,6 +20,7 @@
 	<h2>뮤지컬 등록</h2>
 </div>
 <form name="musicalWriteForm" method="post" action="/musicalWrite" enctype="multipart/form-data">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	<div class="container-fluid">
 	<table class="table table-hover my-4" style="width:70%; margin: auto; ">
 		<tr>
