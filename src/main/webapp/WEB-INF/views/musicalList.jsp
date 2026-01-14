@@ -15,7 +15,6 @@
     margin-bottom: 90px;
     box-sizing: border-box;
 	}
-	
 	.gap{
 		gap: 60px 20px
 	}
@@ -60,13 +59,10 @@
 <div class="container py-4">
 <h3>뮤지컬</h3>
 
-<%-- <c:choose> --%>
-<%-- 	<c:when test="${pageContext.request.userPrincipal.name == 'admin'}"> --%>
-		<div>
-			<input type="button" value="추가하기" onclick="location.href='musicalWriteForm'" class="btn btn-secondary">
-		</div>
-<%-- 	</c:when> --%>
-<%-- </c:choose> --%>
+<sec:authorize access="hasRole('ADMIN')">
+	<a href="/admin/musicalWriteForm">추가하기</a>
+    <button onclick="location.href='/admin/musicalWriteForm'">추가하기</button>
+</sec:authorize>
 
 <div class="mulist_contents gap">
 <div class="row align-items-md-stretch text-center itemlist mulist_contents">

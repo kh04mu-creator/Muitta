@@ -10,6 +10,7 @@
 <style>
 	.width60{
 		width:60%;
+		
 	}
 </style>
 </head>
