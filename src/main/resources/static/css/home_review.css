@@ -1,0 +1,133 @@
+/* 후기 슬라이더 카드 */
+.review-card-small {
+	margin-bottom:70px;
+    min-width: 180px;       /* 카드 너비 */
+    flex: 0 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    height: 280px;           /* 카드 전체 높이 */
+    overflow: hidden;
+}
+
+/* 카드 이미지 */
+.review-img-small {
+    width: 100%;
+    height: 120px;           /* 카드 높이에 맞춰 이미지 크기 조정 */
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    flex: 0 0 auto;
+}
+
+.review-center {
+    display: flex;
+    justify-content: center; /* 카드 가로 중앙 */
+    margin: 20px 0;
+}
+
+
+/* 제목 */
+.review-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    white-space: nowrap;     
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 15ch;              /* 한 줄에 약 15자 */
+    word-break: break-word;   /* 단어 잘림 허용 */
+}
+
+
+
+/* 내용 */
+.review-detail {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4em;       /* 줄 간격 */
+    height: calc(1.4em * 4);  /* 최대 4줄 높이 */
+    overflow: hidden;         
+    display: -webkit-box;     
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;    /* 최대 4줄 */
+    text-overflow: ellipsis;
+    width: 25ch;              /* 한 줄에 약 25자 */
+    word-break: break-word;   /* 단어 잘림 허용 */
+}
+
+/* 작성자 + 별점 */
+.review-meta {
+    margin-top: 6px;         /* 글과 약간 띄우기 */
+    font-size: 11px;
+    color: #777;
+}
+
+.review-meta .stars {
+    color: #FFD700;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* 슬라이더 래퍼 */
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 슬라이더 컨테이너 */
+.review-slider {
+    display: flex;
+    overflow-x: hidden;
+    gap: 10px;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+/* 버튼 스타일 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255,255,255,0.9);
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn.prev { left: -8px; }
+.slider-btn.next { right: -8px; }
+
+.slider-btn:hover {
+    background-color: #ffd700;
+    border-color: #ffc107;
+    color: #fff;
+}
+
+/* 스크롤바 숨기기 */
+.review-slider::-webkit-scrollbar { display: none; }
+.review-slider { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* 커서 모양 */
+.review-card-small {
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.review-card-small:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}

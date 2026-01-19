@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " //mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.springboot.project.dao.muInfoDAO">
+	<select id="mi_listDao" resultType="com.springboot.project.dto.muInfoDTO">
+		select * from mu_info
+	</select>
+	<select id="mi_viewDao" resultType="com.springboot.project.dto.muInfoDTO">
+		select * from mu_info where mu_no=#{param1}
+	</select>
+	<delete id="mi_deleteDao">
+		delete from mu_info where mi_no=#{param1}
+	</delete>
+</mapper>

@@ -1,0 +1,131 @@
+/* 슬라이더 감싸는 영역 */
+.slider-wrapper {
+    width: 100%;
+    max-width: 960px;   /* ⬅ 1080 → 960 */
+    margin: 0 auto;
+    overflow: visible;
+}
+
+
+/* 실제 화면 잘림은 여기서 */
+.home-musical-section {
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+/* 슬라이더 */
+.musical-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.musical-card {
+    flex: 0 0 300px;   /* ⬅ 확실히 축소 */
+    transform: scale(0.78);
+    opacity: 0.35;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    overflow: visible;
+    cursor: pointer;
+    transition: 
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* 🖱️ hover (PC) */
+.musical-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    z-index: 3;
+}
+
+/* 📱 모바일 터치 피드백 */
+.musical-card:active {
+    transform: scale(0.96);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* 가운데 활성 카드 hover 시 더 자연스럽게 */
+.musical-card.active:hover {
+    transform: scale(1.12);
+}
+
+
+
+.musical-card.active {
+    transform: scale(1.25);
+    opacity: 1;
+    z-index: 5;
+}
+
+.musical-img {
+    height: 400px;
+}
+
+
+
+/* 카드 텍스트 영역 */
+.musical-info {
+    padding: 14px 12px 18px;  /* ⬅ 아래 패딩 여유 */
+    min-height: 90px;        /* ⬅ 공연기간 보호 */
+    text-align: center;
+}
+
+.musical-date {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;  /* 날짜 안 짤리게 */
+}
+
+.musical-card.active .musical-info {
+    padding-bottom: 24px;
+}
+
+.slider-wrapper {
+    position: relative;
+}
+
+/* 뮤지컬 슬라이더 좌우 버튼 - Mu PLAY 버튼과 동일 */
+/* Mu PLAY 버튼과 동일한 스타일 */
+.mu-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background: #fff;
+    border: none;
+    font-size: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+/* 위치 */
+.mu-btn.prev { left: 10px; }
+.mu-btn.next { right: 10px; }
+
+/* hover / 클릭 시 자연스러운 피드백 */
+.mu-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.mu-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+
+

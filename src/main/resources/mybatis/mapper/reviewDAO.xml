@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.dao.reviewDAO">
+
+    <!-- 후기 목록 -->
+    <select id="r_listDao" resultType="com.springboot.project.dto.reviewDTO">
+        SELECT *
+        FROM review
+        ORDER BY r_no DESC
+    </select>
+
+    <!-- 조회수 증가 -->
+    <update id="r_viewCountUp">
+        UPDATE review
+        SET r_view = r_view + 1
+        WHERE r_no = #{r_no}
+    </update>
+
+    <!-- 후기 상세 -->
+    <select id="r_viewDao" resultType="com.springboot.project.dto.reviewDTO">
+        SELECT *
+        FROM review
+        WHERE r_no = #{r_no}
+    </select>
+    
+        <!-- 공감 많은 베스트 후기 5개 -->
+    <select id="r_bestReviews" resultType="com.springboot.project.dto.reviewDTO">
+        SELECT r.R_NO,
+               r.R_TITLE,
+               r.R_WRITER,
+               r.R_DATE,
+               r.R_VIEW,
+               r.R_STAR,
+               r.R_DETAIL,
+               r.R_UPLOAD,
+               r.M_NO,
+               COUNT(l.R_NO) AS likeCount
+        FROM REVIEW r
+        LEFT JOIN RW_LIKE l ON r.R_NO = l.R_NO
+        GROUP BY r.R_NO, r.R_TITLE, r.R_WRITER, r.R_DATE, r.R_VIEW, r.R_STAR, r.R_DETAIL, r.R_UPLOAD, r.M_NO
+        ORDER BY likeCount DESC
+        FETCH FIRST 5 ROWS ONLY
+    </select>
+    
+    <select id="selectRecentReviews"
+        resultType="com.springboot.project.dto.reviewDTO">
+    SELECT
+        r_no,
+        r_title,
+        r_star,
+        r_upload
+    FROM review
+    ORDER BY r_date DESC
+    FETCH FIRST 10 ROWS ONLY
+</select>
+    
+
+    <!-- 후기 작성 -->
+    <insert id="r_writeDao">
+        INSERT INTO review (
+            r_no,
+            r_title,
+            r_writer,
+            r_date,
+            r_view,
+            r_star,
+            r_detail,
+            r_upload,
+            m_no
+        )
+        VALUES (
+            review_seq.nextval,
+            #{r_title},
+            #{r_writer},
+            SYSDATE,
+            0,
+            #{r_star},
+            #{r_detail},
+            #{r_upload},
+            #{m_no}
+        )
+    </insert>
+
+    <!-- 후기 수정 -->
+    <update id="r_updateDao">
+        UPDATE review
+        SET
+            r_title  = #{r_title},
+            r_date   = SYSDATE,
+            r_star   = #{r_star},
+            r_detail = #{r_detail},
+            r_upload = #{r_upload}
+        WHERE r_no = #{r_no}
+    </update>
+
+    <!-- 후기 삭제 -->
+    <delete id="r_deleteDao">
+        DELETE FROM review
+        WHERE r_no = #{r_no}
+    </delete>
+
+</mapper>

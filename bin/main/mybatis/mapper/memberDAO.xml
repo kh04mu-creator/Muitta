@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.project.dao.memberDAO">
+	<select id="m_listDao" resultType="com.springboot.project.dto.memberDTO">
+		select * from member order by m_no desc
+	</select>
+	<select id="m_viewDao" resultType="com.springboot.project.dto.memberDTO">
+		select * from member where m_no=#{param1}
+	</select>
+	<select id="findByUserId" resultType="com.springboot.project.dto.memberDTO">
+    select m_no,m_id,m_password,m_auth
+     from member
+     where m_id = #{userId}
+	</select>
+	<insert id="m_writeDao">
+		insert into member(m_no,m_id,m_password,m_name,m_gender,m_birth,m_email,m_tel,m_join,m_auth)
+		 values(member_seq.nextval,#{m_id},#{m_password},#{m_name},#{m_gender},#{m_birth},#{m_email},#{m_tel},SYSDATE,'ROLE_USER')
+	</insert>
+	<update id="m_updateDao">
+		update member
+		 set m_password=#{m_password},m_name=#{m_name},m_email=#{m_email},m_tel=#{m_tel} where m_no=#{m_no}
+	</update>
+	<delete id="m_deleteDao">
+		delete from member where m_no=#{param1}
+	</delete>
+</mapper>
+

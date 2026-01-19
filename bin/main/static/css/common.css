@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* common.css */
+
+/* 1. Regular 폰트 불러오기 */
+@font-face {
+    font-family: 'ChironGoRoundTC';
+    src: url('/font/ChironGoRoundTC-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+/* 2. 전체 페이지에 적용 */
+body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea {
+    font-family: 'ChironGoRoundTC', sans-serif;
+    font-weight: 400; 
+}
+
+
+/* 로고. 전체 페이지에 적용 */
+.tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* .container { */
+/*   display: flex; */
+/*   justify-content: center; */
+/* } */
+
+/* 뮤지컬 */ 
+/* .home-musical-section {
+    max-width: 100%;
+    overflow: visible;
+} */
+
+/* navbar 안정화 */
+.navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  min-height: 72px;
+}
+
+/* brand 정렬 */
+.navbar-brand {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* 로고 크기 */
+.navbar-logo {
+  height: 50px;
+  max-height: 50px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.navbar-logo {
+  max-width: 200px;
+}
+
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 60px;
+  }
+
+  .navbar-logo {
+    height: 55px;
+    max-height: 55px;
+  }
+}
+
+
