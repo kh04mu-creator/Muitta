@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " //mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.dao.musicalWriteDAO">
+	<insert id="insertMuList" parameterType="com.springboot.project.dto.muListDTO">
+
+    <selectKey keyProperty="mu_no" resultType="int" order="BEFORE">
+        SELECT mu_list_seq.NEXTVAL FROM dual
+    </selectKey>
+
+    insert into mu_list(
+        mu_no, mu_title, mu_place, mu_addr, mu_start, mu_end,
+        mu_time, mu_age, inter_price, yes_price, melon_price, inter_link, yes_link, melon_link, mu_pupload
+    )
+    values(
+        #{mu_no}, #{mu_title}, #{mu_place}, #{mu_addr}, #{mu_start}, #{mu_end},
+        #{mu_time}, #{mu_age}, #{inter_price}, #{yes_price}, #{melon_price}, #{inter_link}, 
+        #{yes_link}, #{melon_link}, #{mu_pupload}
+    )
+	</insert>
+	<insert id="insertMuInfo">
+		insert into mu_info(mi_no, mi_detail, mi_upload, mu_no)
+		 values(mu_info_seq.nextval, #{mi_detail}, #{mi_upload}, #{mu_no})
+	</insert>
+	<insert id="insertMuCast">
+		insert into mu_cast(ca_no, ca_upload, mu_no)
+		 values(mu_cast_seq.nextval, #{ca_upload}, #{mu_no})
+	</insert>
+	
+	<update id="updateMuList">
+		update mu_list
+		 set mu_title=#{mu_title},mu_place=#{mu_place},mu_addr=#{mu_addr},mu_start=#{mu_start},
+		 mu_end=#{mu_end},mu_time=#{mu_time},mu_age=#{mu_age},inter_price=#{inter_price}, 
+		 yes_price=#{yes_price}, melon_price=#{melon_price}, inter_link=#{inter_link}, yes_link=#{yes_link}, 
+         melon_link=#{melon_link},mu_pupload=#{mu_pupload} where mu_no=#{mu_no}
+	</update>
+	<update id="updateMuInfo">
+		update mu_info set mi_detail=#{mi_detail}, mi_upload=#{mi_upload} where mu_no=#{mu_no}
+	</update>
+	<update id="updateMuCast">
+		update mu_cast set ca_upload=#{ca_upload} where mu_no=#{mu_no}
+	</update>
+</mapper>

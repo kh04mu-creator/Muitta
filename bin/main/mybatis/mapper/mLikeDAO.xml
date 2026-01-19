@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.project.dao.mLikeDAO">
+	<select id="l_listDao" resultType="com.springboot.project.dto.mLikeDTO">
+		select * from m_like where m_no=#{param1} order by l_no asc	 	
+	</select>
+		<select id="l_checkDao" resultType="int">
+		select count(*) from m_like where mu_no=#{mu_no} and m_no=#{m_no}	
+	</select>
+	<select id="l_countDao" resultType="int">
+		select count(*) from m_like where mu_no=#{param1} 	
+	</select>
+	<insert id="l_writeDao">
+		insert into m_like(l_no, m_no, mu_no)
+		 values(m_like_seq.nextval,#{m_no}, #{mu_no})
+	</insert>
+	<delete id="l_deleteDao">
+		delete from m_like where m_no=#{m_no} and mu_no=#{mu_no}
+	</delete>
+	</mapper>

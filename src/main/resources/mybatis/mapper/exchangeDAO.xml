@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC " //mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.dao.exchangeDAO">
+	<select id="ex_listDao" resultType="com.springboot.project.dto.exchangeDTO">
+		select * from exchange order by ex_no desc
+	</select>
+	<select id="ex_viewDao" resultType="com.springboot.project.dto.exchangeDTO">
+		select * from exchange where ex_no=#{param1}
+	</select>
+	<select id="ex_detail" resultType="com.springboot.project.dto.exchangeDTO">
+		select * from exchange where ex_no=#{ex_no}
+	</select>
+	<insert id="ex_writeDao">
+	    insert into exchange (ex_no, ex_title, ex_writer, ex_date, ex_detail, ex_upload, ex_ing, m_no)
+	    values(exchange_seq.nextval, #{ex_title},#{ex_writer, jdbcType=VARCHAR},SYSDATE, #{ex_detail}, #{ex_upload}, #{ex_ing}, #{m_no})
+	</insert>
+	
+	<update id="ex_updateDao">
+		update exchange set ex_title=#{ex_title}, ex_date=SYSDATE, ex_detail=#{ex_detail}, ex_upload=#{ex_upload}, ex_ing=#{ex_ing} where ex_no=#{ex_no}
+	</update>
+	<delete id="ex_deleteDao">
+		delete from exchange where ex_no=#{param1}
+	</delete>
+</mapper>

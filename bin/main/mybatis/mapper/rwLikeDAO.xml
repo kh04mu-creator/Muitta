@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.dao.rwLikeDAO">
+
+    <!-- 좋아요 여부 확인 -->
+    <select id="likeCheck" resultType="int">
+        SELECT COUNT(*)
+        FROM rw_like
+        WHERE m_no = #{m_no}
+          AND r_no = #{r_no}
+    </select>
+
+    <!-- 좋아요 추가 -->
+    <insert id="likeInsert">
+        INSERT INTO rw_like (
+            rw_no,
+            m_no,
+            r_no
+        )
+        VALUES (
+            rw_like_seq.NEXTVAL,
+            #{m_no},
+            #{r_no}
+        )
+    </insert>
+
+    <!-- 좋아요 취소 -->
+    <delete id="likeDelete">
+        DELETE FROM rw_like
+        WHERE m_no = #{m_no}
+          AND r_no = #{r_no}
+    </delete>
+
+    <!-- 후기별 좋아요 수 -->
+    <select id="likeCount" resultType="int">
+        SELECT COUNT(*)
+        FROM rw_like
+        WHERE r_no = #{r_no}
+    </select>
+    
+    <!-- 리뷰 삭제 시: 해당 리뷰의 좋아요 전체 삭제 (FK 충돌 방지) -->
+    <delete id="likeDeleteByReview">
+        DELETE FROM rw_like
+        WHERE r_no = #{r_no}
+    </delete>
+
+</mapper>
