@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/* common.css */
+
+/* 1. Regular 폰트 불러오기 */
+@font-face {
+    font-family: 'ChironGoRoundTC';
+    src: url('/font/ChironGoRoundTC-Regular.ttf') format('truetype');
+    font-weight: 400; 
+    font-style: normal;
+}
+
+/* 2. 전체 페이지에 적용 */
+body, h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* Mu로고 */
+.tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+}
+
+/* .container { */
+/*   display: flex; */
+/*   justify-content: center; */
+/* } */
+
+/* 뮤지컬 */ 
+/* .home-musical-section {
+    max-width: 100%;
+    overflow: visible;
+} */
+
+
+/* navbar 안정화 */
+.navbar {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  min-height: 72px;
+}
+.navbar .container-fluid{
+  width:min(1200px, calc(100% - 40px));
+  margin:0 auto;
+  height:72px;
+  padding:0 24px;
+}
+
+/* ===== 로고 ===== */
+.navbar-brand{
+  display:flex;
+  align-items:center;
+  margin-right:28px !important; 
+}
+.navbar-logo{
+  height:60px;                   
+  width:auto;
+  object-fit:contain;
+}
+
+/* ===== 메뉴 영역 ===== */
+.navbar-nav{
+  gap:6px;                        /* ⭐ 메뉴 사이 간격 */
+}
+
+.navbar-dark .navbar-nav .nav-link.active{
+  color:#fff !important;
+  opacity:1 !important;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 60px;
+  }
+
+  .navbar-logo {
+    height: 55px;
+    max-height: 55px;
+  }
+}
+
+/* 화면이 작아질수록 nav-link 패딩/폰트/로고 크기 줄이기 */
+@media (max-width: 992px){
+  .navbar .nav-link{
+    font-size: 14px;
+  }
+  .navbar-logo{
+    height: 44px;
+  }
+}
+
+@media (max-width: 576px){
+  .navbar .nav-link{
+    font-size: 13px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .navbar-logo{
+    height: 38px;
+  }
+}

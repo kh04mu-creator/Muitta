@@ -1,0 +1,54 @@
+.home-youtube-section {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.youtube-slider-wrap{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 슬라이더만 숨김 처리 */
+.youtube-slider{
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.youtube-slider iframe {
+    width: 420px;
+    height: 236px; /* 16:9 */
+    border-radius: 16px;
+    flex-shrink: 0; /* ← 찌그러짐 방지 */
+}
+
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  background:none;      /* ⭐ 배경 제거 */
+  border:none;          /* ⭐ 테두리 제거 */
+  box-shadow:none;      /* ⭐ 그림자 제거 */
+
+  font-size:42px;       /* ⭐ 화살표 크기 */
+  font-weight:700;
+  color:#A0A0A0;           /* 색상 */
+
+  cursor:pointer;
+  padding:0;
+  line-height:1;
+}
+
+/* 좌우 위치 */
+.slide-btn.left{ left:-40px; }
+.slide-btn.right{ right:-40px; }
+
+/* hover 효과 */
+.slide-btn:hover{
+  color:#d9230f;        /* 메인컬러 */
+  transform:translateY(-50%) scale(1.15);
+}

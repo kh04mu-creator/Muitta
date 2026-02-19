@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/* 공통 폭 컨테이너 */
+.home-container {
+    width: 100%;
+    max-width: 1300px;   /* Mu PLAY 기준 */
+    margin: 0 auto;
+    padding:0 24px;
+}
+
+.home-md-section {
+    margin-top: 30px;
+}
+
+
+/* MD 추천 이미지 */
+.home-md-section img {
+    width: 60%;
+    height: auto;
+    display: block;
+    border-radius: 20px; /* 선택 */
+    margin: 0 auto;
+    
+}
+
+.home-md-section {
+    margin-bottom: 90px;
+}
+
+.home-md-section img {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+

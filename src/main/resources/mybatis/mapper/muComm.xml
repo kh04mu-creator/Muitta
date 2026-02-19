@@ -1,0 +1,23 @@
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.project.dao.muCommDAO">
+	<select id="mc_listDao" resultType="com.springboot.project.dto.muCommDTO">
+		select * from mu_comm where mu_no=#{mu_no} order by mc_no
+	</select>
+	<select id="mc_viewDao" resultType="com.springboot.project.dto.muCommDTO">
+		select * from mu_comm where mc_no=#{param1}
+	</select>
+	<insert id="mc_writeDao">
+		insert into mu_comm(mc_no, mc_writer, mc_date, mc_detail, mu_no, m_no)
+		 values(mu_comm_seq.nextval,#{mc_writer},SYSDATE,#{mc_detail},#{mu_no},#{m_no})
+	</insert>
+	<update id="mc_updateDao">
+		update mu_comm
+		 set mc_date=SYSDATE,mc_detail=#{mc_detail} where mc_no=#{param1}
+	</update>
+	<delete id="mc_deleteDao">
+		delete from mu_comm where mc_no=#{mc_no}
+	</delete>
+</mapper>
