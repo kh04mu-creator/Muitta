@@ -83,6 +83,15 @@
 			        <div class="row align-items-center">
 						<h3 class="card-title text-center">
 						${detail.md_category} - [ ${detail.md_title} ]</h3>
+						<sec:authorize access="hasRole('ADMIN')">
+						  <div class="d-flex justify-content-end">
+						    <form action="/admin/mdSetHome" method="post" class="d-inline">
+						      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+						      <input type="hidden" name="md_no" value="${detail.md_no}">
+						      <button type="submit" class="btn btn-outline-primary">메인 등록</button>
+						    </form>
+						  </div>
+						</sec:authorize>
 			            <!-- 이미지 -->
 			            <div class="col-md-8 mb-3 mb-md-0 text-center">
 			                <img src="/images/${detail.md_upload}" 
@@ -145,7 +154,11 @@
         </div>
     </div>
 </div>
-
+<c:if test="${not empty msg}">
+<script>
+  alert("${msg}");
+</script>
+</c:if>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

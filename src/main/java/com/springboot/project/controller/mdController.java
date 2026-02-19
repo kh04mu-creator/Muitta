@@ -1,13 +1,19 @@
 package com.springboot.project.controller;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.project.dao.mdDAO;
 import com.springboot.project.dto.mdDTO;
@@ -47,6 +53,26 @@ public class mdController {
 		model.addAttribute("detail", dao.md_viewDao(md_no));	 
 		return "admin/mdDetail";		
 	}
+	
+	@PreAuthorize("hasRole('ADMIN')")
+	@PostMapping("/admin/mdSetHome")
+	public String mdSetHome(@RequestParam("md_no") int md_no,
+	                        RedirectAttributes ra) throws Exception {
+
+	    // ⭐ 저장 경로 (프로젝트 루트/config/home-md.txt)
+	    Path path = Paths.get("config/home-md.txt");
+
+	    // 폴더 없으면 생성
+	    Files.createDirectories(path.getParent());
+
+	    // 파일에 md_no 저장
+	    Files.writeString(path, String.valueOf(md_no));
+
+	    ra.addFlashAttribute("msg", "홈 화면에 등록되었습니다.");
+	    return "redirect:/admin/mdDetail?md_no=" + md_no;
+	}
+
+	
 	@RequestMapping("/admin/mdUpdateForm")
 	public String mdUpdate(HttpServletRequest request, Model model) {
 		int md_no = Integer.parseInt(request.getParameter("md_no"));		

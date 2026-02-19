@@ -1,5 +1,8 @@
 package com.springboot.project.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,30 +19,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springboot.project.dto.muListDTO;
 import com.springboot.project.dto.reviewDTO;
 
+import jakarta.servlet.ServletContext;
+
 @Controller
 public class homeController {
 
     @Autowired
-    DataSource dataSource;    
+    DataSource dataSource;
+    @Autowired
+    ServletContext application;
 
     @RequestMapping("/")
     public String home(Model model) throws Exception {
 
         Connection conn = dataSource.getConnection();
 
-        /* =========================
-         * 1️⃣ MD 추천
-         * ========================= */
-        String mdSql = """
-            SELECT *
-            FROM (SELECT * FROM MD ORDER BY MD_START DESC)
-            WHERE ROWNUM = 1
-        """;
+        Path path = Paths.get("config/home-md.txt");
 
-        PreparedStatement mdPstmt = conn.prepareStatement(mdSql);
+        String mdSql;
+        PreparedStatement mdPstmt;
+
+        if (Files.exists(path)) {
+
+            // ⭐ 파일에서 md_no 읽기
+            String savedNo = Files.readString(path).trim();
+            int mdNo = Integer.parseInt(savedNo);
+
+            mdSql = "SELECT * FROM MD WHERE MD_NO=?";
+            mdPstmt = conn.prepareStatement(mdSql);
+            mdPstmt.setInt(1, mdNo);
+
+        } else {
+
+            // ⭐ 파일 없으면 최신 MD
+            mdSql = """
+                SELECT *
+                FROM (SELECT * FROM MD ORDER BY MD_START DESC)
+                WHERE ROWNUM = 1
+            """;
+            mdPstmt = conn.prepareStatement(mdSql);
+        }
+
         ResultSet mdRs = mdPstmt.executeQuery();
 
         if (mdRs.next()) {
+            model.addAttribute("md_no", mdRs.getInt("MD_NO"));
             model.addAttribute("md_title", mdRs.getString("MD_TITLE"));
             model.addAttribute("md_upload", mdRs.getString("MD_UPLOAD"));
             model.addAttribute("md_memo", mdRs.getString("MD_MEMO"));
@@ -47,6 +71,8 @@ public class homeController {
 
         mdRs.close();
         mdPstmt.close();
+
+        
 
         /* =========================
          * 2️⃣ 베스트 후기 TOP 10
