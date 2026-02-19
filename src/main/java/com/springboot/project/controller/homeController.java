@@ -35,6 +35,59 @@ public class homeController {
         Connection conn = dataSource.getConnection();
 
         Path path = Paths.get("config/home-md.txt");
+        
+     // 1) 파일에서 md_no 읽기(있으면)
+        Integer fileMdNo = null;
+        if (Files.exists(path)) {
+            String s = Files.readString(path).trim();
+            if (!s.isEmpty()) fileMdNo = Integer.parseInt(s);
+        }
+     // 2) 우선 파일 md_no로 조회
+        boolean found = false;
+
+        if (fileMdNo != null) {
+            try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM MD WHERE MD_NO=?")) {
+                ps.setInt(1, fileMdNo);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (rs.next()) {
+                        found = true;
+                        model.addAttribute("md_no", rs.getInt("MD_NO"));
+                        model.addAttribute("md_title", rs.getString("MD_TITLE"));
+                        model.addAttribute("md_upload", rs.getString("MD_UPLOAD"));
+                        model.addAttribute("md_memo", rs.getString("MD_MEMO"));
+                    }
+                }
+            }
+        }
+
+        // 3) 없으면(삭제됨/잘못됨) → 최신 1개로 fallback + 파일도 그 md_no로 덮어쓰기
+        if (!found) {
+            String latestSql = """
+                SELECT *
+                FROM (SELECT * FROM MD ORDER BY MD_START DESC)
+                WHERE ROWNUM = 1
+            """;
+
+            try (PreparedStatement ps2 = conn.prepareStatement(latestSql);
+                 ResultSet rs2 = ps2.executeQuery()) {
+
+                if (rs2.next()) {
+                    int newHomeNo = rs2.getInt("MD_NO");
+
+                    model.addAttribute("md_no", newHomeNo);
+                    model.addAttribute("md_title", rs2.getString("MD_TITLE"));
+                    model.addAttribute("md_upload", rs2.getString("MD_UPLOAD"));
+                    model.addAttribute("md_memo", rs2.getString("MD_MEMO"));
+
+                    // ⭐ 파일 갱신: 다음부터는 이걸 홈으로
+                    Files.createDirectories(path.getParent());
+                    Files.writeString(path, String.valueOf(newHomeNo));
+                } else {
+                    // MD 테이블이 비어있으면 파일도 삭제
+                    Files.deleteIfExists(path);
+                }
+            }
+        }
 
         String mdSql;
         PreparedStatement mdPstmt;

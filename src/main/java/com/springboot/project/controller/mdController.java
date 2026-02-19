@@ -50,7 +50,8 @@ public class mdController {
 	@RequestMapping("/admin/mdDetail")
 	 public String mdDetail(HttpServletRequest request, Model model) { 
 		int md_no = Integer.parseInt(request.getParameter("md_no")); 
-		model.addAttribute("detail", dao.md_viewDao(md_no));	 
+		model.addAttribute("detail", dao.md_viewDao(md_no));
+		
 		return "admin/mdDetail";		
 	}
 	
